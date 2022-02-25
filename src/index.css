@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Helvetica";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+
+:root {
+  --color-primary: #281ac8;
+  --color-primary-rgb: 40, 26, 200;
+  --color-secondary: #fd749b;
+  --color-darkblue: #1e0338;
+  --color-voilet: #250a3e;
+  --color-light-grey: #a5a5a5;
+}

@@ -1,0 +1,20 @@
+.loader.full__screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.loader.full__screen svg {
+    width: 150px;
+    height: 150px;
+}
+.loader .loader__contents {
+    margin-top: 3rem;
+}

@@ -1,0 +1,57 @@
+.walletsform {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.walletsform__inner {
+    background: var(--color-darkblue);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #fff;
+    width: fit-content;
+    box-shadow: 0px 0px 9px #9e537729;
+}
+
+.walletsform__inner .close__icon {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 25px;
+    cursor: pointer;
+    opacity: 0.9;
+}
+.walletsform__inner .close__icon:hover {
+    opacity: 1;
+}
+.walletsform__inner ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+.wallet__card {
+    background: var(--color-voilet);
+    padding: 1.5rem;
+    margin: 2px;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+.wallet__card:hover {
+    opacity: 0.7;
+}
+.wallet__card .wallet__icon {
+    width: 32px;
+}
+.wallet__card .title {
+    font-size: 12px;
+    white-space: nowrap;
+    color: #a5a5a5;
+}

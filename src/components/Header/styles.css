@@ -1,0 +1,27 @@
+.header {
+    align-items: center;
+}
+.header__menus ul {
+    list-style: none;
+    display: flex;
+}
+.header__menus ul li {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.header__menus ul li a:hover {
+    opacity: 0.8;
+}
+.header__menus ul li a {
+    padding: 1rem 1.2rem;
+    color: #fff;
+    height: 100%;
+}
+.header__menus ul li .connect__wallet-btn {
+    height: 42px;
+    border-radius: 25px;
+    width: 140px;
+    color: #fff;
+    cursor: pointer;
+}

@@ -1,0 +1,42 @@
+.bg__main::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url(./assets/images/main-background-image.svg);
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: inherit;
+    background-size: cover;
+    z-index: -1;
+}
+
+.section__padding {
+    padding: 1rem 4rem;
+}
+
+.flex {
+    display: flex;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+.grow-1 {
+    flex-grow: 1;
+}
+
+.linear_gradient_primary {
+    background-image: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.5) 20%, var(--color-secondary));
+}
+
+.mb45 {
+    margin-bottom: 45px;
+}
+.mb20 {
+    margin-bottom: 20px;
+}
