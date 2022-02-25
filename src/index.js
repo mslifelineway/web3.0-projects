@@ -6,13 +6,15 @@ import { GlobalContextProvider } from "./contexts/GlobalContext";
 import { MoralisContextProvider } from "./contexts/MoralisContext";
 import "./index.css";
 
+const MORALIS_APP_ID =
+  process.env.REACT_APP_MORALIS_APP_ID || "<YOUR_MORALIS_APP_ID>";
+const SERVER_URL =
+  process.env.REACT_APP_MORALIS_SERVER_URL || "<YOUR_MORALIS_SERVER_URL>";
+
 ReactDOM.render(
   <React.StrictMode>
     <GlobalContextProvider>
-      <MoralisProvider
-        appId="j2z85AlLNxPJwiycfaWM8xMl04vArBfKNvJjJKWR"
-        serverUrl="https://el6s2yzhi045.usemoralis.com:2053/server"
-      >
+      <MoralisProvider appId={MORALIS_APP_ID} serverUrl={SERVER_URL}>
         <MoralisContextProvider>
           <App />
         </MoralisContextProvider>

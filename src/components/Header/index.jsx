@@ -4,7 +4,7 @@ import MoralisLogoLight from "../../assets/images/moralis-logo-light.svg";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { MoralisContext } from "../../contexts/MoralisContext";
 import { PAGE_PATHS } from "../../utils/constants";
-
+import { shortenAddress } from "../../utils/helpers";
 import "./styles.css";
 
 const Header = () => {
@@ -12,18 +12,39 @@ const Header = () => {
     useContext(GlobalContext);
   const { isUserAuthenticated, logout } = useContext(MoralisContext);
 
+  const currentUserStringified = window.localStorage.getItem(
+    `Parse/${process.env.REACT_APP_MORALIS_APP_ID}/currentUser`
+  );
+  const currentUser = currentUserStringified
+    ? JSON.parse(currentUserStringified)
+    : {};
+
+  console.log("--->currentUser: ", currentUser);
+
   const menus = [
     { name: "Home", link: PAGE_PATHS.ROOT },
     { name: "Transactions", link: PAGE_PATHS.TRANSACTIONS },
   ];
 
-  const RenderMenuItem = ({ name, link, handleClick, button }) => {
+  const RenderMenuItem = ({
+    name,
+    link,
+    handleClick,
+    button,
+    title,
+    style = {},
+  }) => {
     return (
       <li>
         {button ? (
-          <Button text="Connect to wallet" onClick={handleClick} />
+          <Button
+            text="Connect to wallet"
+            onClick={handleClick}
+            title={title}
+            style={style}
+          />
         ) : (
-          <a href={link} onClick={handleClick}>
+          <a href={link} onClick={handleClick} title={title} style={style}>
             {name}
           </a>
         )}
@@ -48,7 +69,20 @@ const Header = () => {
         <ul>
           <RenderMenus />
           {isUserAuthenticated() ? (
-            <RenderMenuItem name="Logout" handleClick={logout} />
+            <>
+              <RenderMenuItem name="Logout" handleClick={logout} />
+              {currentUser?.authData?.moralisEth?.id && (
+                <RenderMenuItem
+                  name={shortenAddress(currentUser?.authData?.moralisEth?.id)}
+                  title="Logged in account address"
+                  style={{
+                    fontWeight: "bold",
+                    color: "#ffc83d",
+                    cursor: "auto",
+                  }}
+                />
+              )}
+            </>
           ) : (
             <>
               <RenderMenuItem

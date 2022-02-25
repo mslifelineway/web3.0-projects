@@ -54,6 +54,7 @@ const MoralisContextProvider = ({ children }) => {
   const logoutUser = () => {
     logout();
     window.localStorage.removeItem("WALLETCONNECT_DEEPLINK_CHOICE");
+    window.localStorage.clear();
   };
 
   useEffect(() => {
