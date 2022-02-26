@@ -31,7 +31,7 @@
 }
 
 .linear_gradient_primary {
-    background-image: linear-gradient(to top, rgba(var(--color-primary-rgb), 0.5) 20%, var(--color-secondary));
+    background-image: linear-gradient(to right, rgba(var(--color-primary-rgb), 0.5) 20%, var(--color-secondary));
 }
 
 .mb45 {
@@ -39,4 +39,11 @@
 }
 .mb20 {
     margin-bottom: 20px;
+}
+.mb25 {
+    margin-bottom: 25px;
+}
+
+.error {
+    color: red;
 }

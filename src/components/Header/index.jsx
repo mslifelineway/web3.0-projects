@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { AiOutlineLogout } from "react-icons/ai";
 import { Button } from "..";
 import MoralisLogoLight from "../../assets/images/moralis-logo-light.svg";
 import { GlobalContext } from "../../contexts/GlobalContext";
@@ -10,7 +11,7 @@ import "./styles.css";
 const Header = () => {
   const { handleAuthFormModalOpen, handleWalletsModalOpen } =
     useContext(GlobalContext);
-  const { isUserAuthenticated, logout } = useContext(MoralisContext);
+  const { logout } = useContext(MoralisContext);
 
   const currentUserStringified = window.localStorage.getItem(
     `Parse/${process.env.REACT_APP_MORALIS_APP_ID}/currentUser`
@@ -19,35 +20,30 @@ const Header = () => {
     ? JSON.parse(currentUserStringified)
     : {};
 
-  console.log("--->currentUser: ", currentUser);
-
   const menus = [
     { name: "Home", link: PAGE_PATHS.ROOT },
     { name: "Transactions", link: PAGE_PATHS.TRANSACTIONS },
   ];
 
   const RenderMenuItem = ({
-    name,
+    text,
     link,
     handleClick,
     button,
     title,
     style = {},
+    className,
+    children,
   }) => {
     return (
-      <li>
-        {button ? (
-          <Button
-            text="Connect to wallet"
-            onClick={handleClick}
-            title={title}
-            style={style}
-          />
-        ) : (
-          <a href={link} onClick={handleClick} title={title} style={style}>
-            {name}
-          </a>
-        )}
+      <li
+        className={className}
+        style={style}
+        title={title}
+        onClick={handleClick}
+      >
+        {text && (button ? <Button text={text} /> : <a href={link}>{text}</a>)}
+        {children}
       </li>
     );
   };
@@ -55,10 +51,17 @@ const Header = () => {
   const RenderMenus = () => {
     return menus.map(({ name, link, handleClick }) => (
       <div key={name}>
-        <RenderMenuItem link={link} name={name} handleClick={handleClick} />
+        <RenderMenuItem link={link} text={name} handleClick={handleClick} />
       </div>
     ));
   };
+
+  let userInfo;
+
+  if (currentUser?.authData?.moralisEth?.id)
+    userInfo = shortenAddress(currentUser?.authData?.moralisEth?.id);
+  else if (currentUser.username) userInfo = currentUser.username;
+
   return (
     <div className="header flex">
       <a href={PAGE_PATHS.ROOT}>
@@ -68,30 +71,32 @@ const Header = () => {
       <div className="header__menus">
         <ul>
           <RenderMenus />
-          {isUserAuthenticated() ? (
+          {Object.keys(currentUser || {}).length !== 0 ? (
             <>
-              <RenderMenuItem name="Logout" handleClick={logout} />
-              {currentUser?.authData?.moralisEth?.id && (
+              {userInfo && (
                 <RenderMenuItem
-                  name={shortenAddress(currentUser?.authData?.moralisEth?.id)}
+                  text={userInfo}
                   title="Logged in account address"
-                  style={{
-                    fontWeight: "bold",
-                    color: "#ffc83d",
-                    cursor: "auto",
-                  }}
+                  className="userinfo"
                 />
               )}
+              <RenderMenuItem
+                handleClick={logout}
+                className="logout__button"
+                title="Logout"
+              >
+                <AiOutlineLogout />
+              </RenderMenuItem>
             </>
           ) : (
             <>
               <RenderMenuItem
-                name="Sign In"
+                text="Sign In"
                 handleClick={handleAuthFormModalOpen}
               />
               <RenderMenuItem
                 button
-                name="Connect to wallet"
+                text="Connect to wallet"
                 handleClick={handleWalletsModalOpen}
               />
             </>

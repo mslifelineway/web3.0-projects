@@ -22,7 +22,7 @@
 }
 
 .authform__inner .action__buttons {
-    width: 300px;
+    width: 100%;
     margin: 0 auto;
 }
 .authform__inner .close__icon {
@@ -43,4 +43,13 @@
 .authform__inner .divider {
     width: auto;
     margin: 0 10px 15px 10px;
+}
+.authform__inner .authform__wrapper {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.authform__wrapper .signup__form .title {
+    color: #fff;
+    text-align: center;
 }

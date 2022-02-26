@@ -1,0 +1,23 @@
+.input__box {
+    width: 100%;
+    position: relative;
+}
+
+.input__box input {
+    width: 100%;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    color: #000;
+}
+
+.input__box input::placeholder {
+    color: #000;
+}
+
+.input__box .error {
+    position: absolute;
+    left: 20px;
+    bottom: -18px;
+    font-size: 12px;
+}

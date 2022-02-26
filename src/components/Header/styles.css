@@ -25,3 +25,14 @@
     color: #fff;
     cursor: pointer;
 }
+.header__menus ul li.userinfo a {
+    color: #a5ccb8;
+    cursor: auto;
+}
+.header__menus ul li.logout__button {
+    font-weight: bold;
+    color: #ffc83d;
+    cursor: auto;
+    font-size: 32px;
+    cursor: pointer;
+}

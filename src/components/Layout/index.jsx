@@ -6,7 +6,6 @@ import "./styles.css";
 
 const Layout = ({ mainBgNotRequired, children }) => {
   const { authFormModalOpen, walletsModalOpen } = useContext(GlobalContext);
-
   const RenderModals = () => {
     return (
       <>

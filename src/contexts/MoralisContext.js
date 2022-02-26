@@ -5,13 +5,14 @@ import React, {
   useCallback,
 } from "react";
 import { useMoralis } from "react-moralis";
+import { toast } from "react-toastify";
 import { MESSAGES } from "../utils/constants";
 import { GlobalContext } from "./GlobalContext";
 
 const MoralisContext = createContext();
 
 const MoralisContextProvider = ({ children }) => {
-  const { handleWalletsModalClose, setAlertMessage } =
+  const { handleWalletsModalClose, handleAuthFormModalClose } =
     useContext(GlobalContext);
   const {
     logout,
@@ -25,10 +26,13 @@ const MoralisContextProvider = ({ children }) => {
     authError,
   } = useMoralis();
 
-  const signInUsingMetamask = () => {
-    authenticate({
+  const signInUsingMetamask = async () => {
+    const authResp = await authenticate({
       signingMessage: MESSAGES.METAMASK_AUTH_MESSAGE,
     });
+    if (authResp) {
+      toast.success(MESSAGES.LOGGED_IN);
+    }
   };
 
   const authWithWalletConnect = () => {
@@ -57,24 +61,70 @@ const MoralisContextProvider = ({ children }) => {
     window.localStorage.clear();
   };
 
+  const enableWeb3Instance = useCallback(async () => {
+    if (Moralis.web3) {
+      window.web3 = await Moralis.web3.enable();
+      console.log("Congratulations! web3 has been activated");
+    }
+  }, [Moralis.web3]);
+
   useEffect(() => {
-    // if (!isWeb3Enabled && isAuthenticated) {
-    //   enableWeb3({ provider: "walletconnect", chainId: 56 });
-    //   console.log("Congratulations! web3 has been activated");
-    // }
-  }, [isWeb3Enabled, isAuthenticated, enableWeb3]);
+    if (!isWeb3Enabled && isAuthenticated) {
+      enableWeb3Instance();
+      // enableWeb3({ provider: "walletconnect", chainId: 56 });
+    }
+  }, [isWeb3Enabled, isAuthenticated, enableWeb3, enableWeb3Instance]);
 
   useEffect(() => {
     if (isUserAuthenticated()) {
+      handleAuthFormModalClose();
       handleWalletsModalClose();
     }
-  }, [isAuthenticated, isUserAuthenticated, handleWalletsModalClose]);
+  }, [
+    isAuthenticated,
+    isUserAuthenticated,
+    handleAuthFormModalClose,
+    handleWalletsModalClose,
+  ]);
 
   useEffect(() => {
     if (authError) {
-      setAlertMessage({ message: authError.message });
+      toast.error(authError.message);
     }
-  }, [authError, setAlertMessage]);
+  }, [authError]);
+
+  const signInWithEmailAndPassword = async ({ email, password }) => {
+    try {
+      await Moralis.User.logIn(email, password);
+      handleAuthFormModalClose();
+    } catch (error) {
+      toast.error(error.message || MESSAGES.LOGIN_FAILED);
+    }
+  };
+
+  const signUpWithEmailAndPassword = async ({ email, password }) => {
+    const user = new Moralis.User();
+    user.set("username", email);
+    user.set("email", email);
+    user.set("password", password);
+    try {
+      await user.signUp();
+      await signInWithEmailAndPassword({
+        email,
+        password,
+      });
+      toast.success(MESSAGES.ACCOUNT_CREATED_AND_LOGGED_IN);
+    } catch (error) {
+      if (error.code === 202) {
+        await signInWithEmailAndPassword({
+          email,
+          password,
+        });
+        return toast.success(MESSAGES.LOGGED_IN);
+      }
+      toast.error(error.message || MESSAGES.SIGNUP_FAILED);
+    }
+  };
 
   return (
     <MoralisContext.Provider
@@ -85,6 +135,8 @@ const MoralisContextProvider = ({ children }) => {
         logout: logoutUser,
         isAuthenticating,
         Moralis,
+        signUpWithEmailAndPassword,
+        signInWithEmailAndPassword,
       }}
     >
       {children}
