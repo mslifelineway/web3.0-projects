@@ -26,6 +26,11 @@
     display: flex;
     justify-content: center;
 }
+.flex-full-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .grow-1 {
     flex-grow: 1;
 }
@@ -46,4 +51,10 @@
 
 .error {
     color: red;
+}
+
+@media screen and (max-width: 600px) {
+    .section__padding {
+        padding: 1rem 2rem;
+    }
 }

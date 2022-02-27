@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import { Loader } from "..";
+import { CloseIconWithCarret, Loader } from "..";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { MoralisContext } from "../../contexts/MoralisContext";
 import Squarelink from "../../assets/images/squarelink.svg";
 import MetamaskFox from "../../assets/images/metamask-fox.svg";
-import CloseIcon from "../../assets/images/close-icon.svg";
 import Fortmatic from "../../assets/images/fortmatic.svg";
 import Portis from "../../assets/images/portis-io.svg";
 import Walletconnect from "../../assets/images/walletconnect-circle-white.svg";
@@ -54,20 +53,23 @@ const WalletsModal = () => {
           <img src={wallet.icon} alt="wallet" className="wallet__icon" />
         )}
         <h5 className="name">{wallet.name}</h5>
-        <p className="title">{wallet.title}</p>
+        <p className="title" title={wallet.title}>
+          {wallet.title}
+        </p>
       </div>
     );
   };
+
   return (
     <div className="walletsform">
       <div className="walletsform__inner">
-        <img
-          src={CloseIcon}
-          alt="Close"
+        <div
           className="close__icon"
           title="Close"
           onClick={handleWalletsModalClose}
-        />
+        >
+          <CloseIconWithCarret carretDirection="left" />
+        </div>
         <ul>
           {wallets.map((wallet) => {
             return (

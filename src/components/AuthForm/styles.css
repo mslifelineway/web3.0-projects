@@ -10,7 +10,7 @@
 }
 .authform__inner {
     background: var(--color-darkblue);
-    padding: 2rem 6rem;
+    padding: 2rem 4rem;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -52,4 +52,21 @@
 .authform__wrapper .signup__form .title {
     color: #fff;
     text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .authform__inner {
+        padding: 2rem 3rem;
+    }
+}
+@media screen and (max-width: 600px) {
+    .authform__inner {
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .authform__inner .authform__wrapper {
+        width: 250px;
+    }
 }

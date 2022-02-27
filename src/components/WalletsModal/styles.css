@@ -10,20 +10,20 @@
 }
 .walletsform__inner {
     background: var(--color-darkblue);
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     position: relative;
     color: #fff;
     width: fit-content;
     box-shadow: 0px 0px 9px #9e537729;
+    width: 50%;
 }
 
 .walletsform__inner .close__icon {
     position: absolute;
-    right: 1rem;
-    top: 1rem;
-    width: 25px;
+    right: -3rem;
+    top: 0rem;
     cursor: pointer;
     opacity: 0.9;
 }
@@ -32,9 +32,14 @@
 }
 .walletsform__inner ul {
     list-style: none;
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.walletsform__inner ul li {
+    width: 50%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
 }
 .wallet__card {
     background: var(--color-voilet);
@@ -43,6 +48,8 @@
     text-align: center;
     overflow: hidden;
     cursor: pointer;
+    border: 1px solid #ffffff1c;
+    width: 100%;
 }
 .wallet__card:hover {
     opacity: 0.7;
@@ -54,4 +61,51 @@
     font-size: 12px;
     white-space: nowrap;
     color: #a5a5a5;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 900px) {
+    .walletsform__inner {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .walletsform__inner {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wallet__card .title,
+    .wallet__card .name {
+        display: none;
+    }
+    .walletsform__inner ul li {
+        width: calc(100% / 3);
+    }
+}
+@media screen and (max-width: 525px) {
+    .walletsform__inner ul li {
+        width: calc(100% / 2);
+    }
+    .walletsform__inner .close__icon {
+        right: 0rem;
+        top: -3rem;
+    }
+    .walletsform__inner .close__icon .closeIconWithCarret .carret__icon.left {
+        left: auto;
+        bottom: -12px;
+        transform: rotateZ(268deg);
+    }
+    .walletsform__inner .close__icon .closeIconWithCarret .closeIconWithCarret__close.left {
+        background-image: linear-gradient(to bottom, rgba(var(--color-primary-rgb), 0.5) -4%, var(--color-secondary));
+    }
+}
+@media screen and (max-width: 400px) {
+    .walletsform__inner ul li {
+        width: calc(100%);
+    }
 }

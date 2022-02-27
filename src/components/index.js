@@ -5,3 +5,4 @@ export { default as Button } from "./Button";
 export { default as WalletsModal } from "./WalletsModal";
 export { default as Loader } from "./Loader";
 export { default as Input } from "./Input";
+export { default as CloseIconWithCarret } from "./CloseIconWithCarret";
