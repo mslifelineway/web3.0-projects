@@ -1,34 +1,82 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Project - NFT Moralis
 
-First, run the development server:
+# Contact Details
+    ✋Welcome to my profile
+    📛 Mukesh Kumar 😍
+     👨‍🏫 MERN full stack developer (1.5 yrs) | Blockchain Developer (fresher) | Web 3.0 Developer 💻👩‍💻
+    📧 mukeshms40003@gmail.com
+    📞 7015720216
+    🤷‍♂️ Available for freelance (daily work time 2-4 hrs)
+   Visit 👉 https://dev-mukesh.netlify.com
+   Resource - theItalianDev (Youtube channel)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+# Services (We provide)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    1. Freelancer (Hire me)
+    2. Any kind of web development (using modern technology like React)
+    3. Backend and Frontend (specialist)
+    4. Writing smart contract (new in blockchain)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+---------------------------------------------------------------------------------------------------------------------------
+# Technologies
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+    - Next Js
+    - React Js
+    - Chakra-UI
+    - Moralis
+    - Localstorage
+    - Web 3.0
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+    
+# Web 3.0
 
-## Learn More
+. Web 3.0 is the next iteration of the internet that focuses on decentralisation. It aims to create a level of        transparency, where smart contracts will control user data and transactions instead of centralised organisations
+. Web 3.0 is the next iteration of the internet that focuses on decentralisation
 
-To learn more about Next.js, take a look at the following resources:
+# Functionalities
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    1. Sending ethereum to others (other addresses)
+    2. Viewing the transactions done by the user address
+    3. Able to connect to metamask account.
+    4. User can see the list of his NFTs.
+    5. Moralis has been used to achieve all these services.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+--------------------------------------------------------------------------------------------------------------------
 
-## Deploy on Vercel
+# SETUP PROCESS (Follow these instructions to setup this project on your local)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    clone this repository and follow the next js project guidelines.
+    - start :  npm start
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# SCREENSHOTS
+
+# Login Page
+
+![plot](./public/assets/screenshots/login_screen.png)
+
+# Login With Metamask
+
+![plot](./public/assets/screenshots/login_with_metamask.png)
+
+# Profile
+
+![plot](./public/assets/screenshots/dashboard_and_profile_screen.png)
+
+# Balance
+
+![plot](./public/assets/screenshots/balance.png)
+
+# Latest Transactions
+
+![plot](./public/assets/screenshots/transactions_screen.png)
+
+# NFT
+
+![plot](./public/assets/screenshots/nft_screen.png)
+
+# Send Ether
+
+![plot](./src/assets/screenshots/send_eth_screen.png)
