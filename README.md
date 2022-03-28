@@ -79,4 +79,4 @@
 
 # Send Ether
 
-![plot](./src/assets/screenshots/send_eth_screen.png)
+![plot](./public/assets/screenshots/send_eth_screen.png)
